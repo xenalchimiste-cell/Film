@@ -5,6 +5,27 @@
 {% block body %}
     <h1>Movie index</h1>
 
+<h1>Liste des films</h1>
+
+<form method="GET" action="{{ path('app_movie_index') }}">
+
+    <input 
+        type="text" 
+        name="title" 
+        placeholder="Rechercher un film..."
+        value="{{ title }}"
+    >
+
+        <button type="submit">
+        Rechercher
+        </button>
+    {% if title %}
+        <a class="btn" href="{{ path('app_movie_index') }}">
+        Réinitialiser
+        </a>
+    {% endif %}
+</form>
+
     <table class="table">
         <thead>
             <tr>
@@ -27,17 +48,17 @@
                 <td>{{ movie.synopsis }}</td>
                 <td>{{ movie.genres }}</td>
                 <td>
-                    <a href="{{ path('app_movie_show', {'id': movie.id}) }}">show</a>
-                    <a href="{{ path('app_movie_edit', {'id': movie.id}) }}">edit</a>
+                    <a href="{{ path('app_movie_show', {'id': movie.id}) }}">Voir</a>
+                    <a href="{{ path('app_movie_edit', {'id': movie.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Aucun film trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_movie_new') }}">Create new</a>
+    <a href="{{ path('app_movie_new') }}">Crée un film</a>
 {% endblock %}
