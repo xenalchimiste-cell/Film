@@ -94,3 +94,4 @@ final class MovieController extends AbstractController
         return $this->redirectToRoute('app_movie_index');
     }
 }
+
