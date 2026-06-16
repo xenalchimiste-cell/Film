@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+// Récupère tous les films présents dans la base de données
+// et permet également de filtrer par titre grâce à la recherche
 #[Route('/movie')]
 final class MovieController extends AbstractController
 {
@@ -31,7 +33,8 @@ final class MovieController extends AbstractController
         ]);
     }
 
-
+// Création d'un nouveau film avec le formulaire Symfony
+// puis enregistrement dans la base de données avec Doctrine
     #[Route('/new', name: 'app_movie_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

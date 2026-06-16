@@ -7,16 +7,17 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+// Définit les champs du formulaire d'ajout et de modification d'un film
+// Liste des genres disponibles pour éviter les valeurs incorrectes
 class MovieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('director')
-            ->add('releaseYear')
-            ->add('synopsis')
+            ->add('titre')
+            ->add('réalisateur')
+            ->add('année')
+            ->add('description')
             ->add('genres', ChoiceType::class, [
                 'choices' => [
                     'Action' => 'Action',
